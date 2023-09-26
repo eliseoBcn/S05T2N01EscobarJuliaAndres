@@ -1,0 +1,33 @@
+
+
+CONTROLADOR API REST
+
+	1. POST: / players:  crea un jugador/a. 
+	2. PUT/ players:  modifica el  nombre  del jugador /a.
+	3. GET / players / : Listado  de  todos los jugadores/as  Y Porcentaje Exito 
+	
+	
+	4. POST / players /{id}/ games / : Lanzar tirada  de los dados .    
+	5. DELETE / players /{id}/ games : Eliminar todas las jugadas del Jugagor
+	6. GET / players /{id}/ games : Jugadas del  jugador/a.  
+	
+	7. GET /players/ranking:  Porcentaje Medio Exito de todos los jugadores del Torneo
+	8. GET / players /ranking/loser: Jugador con peor porcentaje de éxito.     
+	9. GET/players/ranking/winner:  Jugador con mejor     porcentaje de éxito.     
+
+
+ENTIDADES
+
+	GAMER (@OneToMany) 1 Jugador n tiradas
+
+ 	private long id;
+	String nombre; (unico , no se puede repetir )
+	double porcentajeExito;
+	List<TiradasGame> tiradasGame;
+
+    TIRADASGAME . @ManyToOne)  N   tiradas  1 Jugador .
+	NumeroTirada (1, 2, 3 ,n)
+	int dado1
+	int dado2
+	int resultado ( Ganador Si (dado1 + dado2) = 7 )
+	id( DEL GAMER)
